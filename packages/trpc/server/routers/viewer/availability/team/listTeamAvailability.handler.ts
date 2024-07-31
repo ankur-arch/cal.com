@@ -11,6 +11,7 @@ import { TRPCError } from "@trpc/server";
 
 import type { TrpcSessionUser } from "../../../../trpc";
 import type { TListTeamAvailaiblityScheme } from "./listTeamAvailability.schema";
+import { queryForTotalMembers } from ".prisma/client/sql";
 
 type GetOptions = {
   ctx: {
@@ -156,11 +157,7 @@ async function getInfoForAllTeams({ ctx, input }: GetOptions) {
 
   // Get total team count across all teams the user is in (for pagination)
 
-  const totalTeamMembers = await prisma.$queryRaw<
-    {
-      count: number;
-    }[]
-  >`SELECT COUNT(DISTINCT "userId")::integer from "Membership" WHERE "teamId" IN (${Prisma.join(teamIds)})`;
+  const totalTeamMembers = await prisma.$queryRawTyped(queryForTotalMembers(), Prisma.join(teamIds));
 
   return {
     teamMembers,

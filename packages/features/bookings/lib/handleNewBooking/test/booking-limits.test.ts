@@ -244,7 +244,7 @@ describe("handleNewBooking", () => {
             body: mockBookingData,
           });
 
-          vi.spyOn(prismock, "$queryRaw").mockResolvedValue([{ totalMinutes: yearlyDurationLimit }]);
+          vi.spyOn(prismock, "$queryRawTyped").mockResolvedValue([{ totalMinutes: yearlyDurationLimit }]);
 
           await expect(async () => await handleNewBooking(req)).rejects.toThrowError(
             "duration_limit_reached"
@@ -270,7 +270,7 @@ describe("handleNewBooking", () => {
             body: mockBookingDataFollowingYear,
           });
 
-          vi.spyOn(prismock, "$queryRaw").mockResolvedValue([{ totalMinutes: 0 }]);
+          vi.spyOn(prismock, "$queryRawTyped").mockResolvedValue([{ totalMinutes: 0 }]);
 
           const createdBooking = await handleNewBooking(reqFollowingYear);
 

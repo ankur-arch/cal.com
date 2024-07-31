@@ -1,10 +1,11 @@
 import { Prisma } from "@prisma/client";
 
 import prisma from ".";
+import { queryHealthCheck } from ".prisma/client/sql";
 
 export async function isPrismaAvailableCheck() {
   try {
-    await prisma.$queryRaw`SELECT 1`;
+    await prisma.$queryRawTyped(queryHealthCheck);
     return true;
   } catch (e: unknown) {
     if (e instanceof Prisma.PrismaClientInitializationError) {
