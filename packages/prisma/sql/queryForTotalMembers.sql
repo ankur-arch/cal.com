@@ -1,3 +1,3 @@
 SELECT COUNT(DISTINCT "userId")::integer
 FROM "Membership"
-WHERE "teamId" IN ($1);
+WHERE "teamId" = ANY($1::int[])

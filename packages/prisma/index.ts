@@ -2,10 +2,23 @@ import type { Prisma } from "@prisma/client";
 import { PrismaClient as PrismaClientWithoutExtension } from "@prisma/client";
 import { withAccelerate } from "@prisma/extension-accelerate";
 
+import {
+  queryForMostPopularApps,
+  queryForTotalBookingTime,
+  queryForTotalMembers,
+  queryHealthCheck,
+} from "../../node_modules/.prisma/client/sql";
 import { bookingIdempotencyKeyExtension } from "./extensions/booking-idempotency-key";
 import { excludePendingPaymentsExtension } from "./extensions/exclude-pending-payment-teams";
 import { usageTrackingExtention } from "./extensions/usage-tracking";
 import { bookingReferenceMiddleware } from "./middleware";
+
+export const SQL = {
+  queryForMostPopularApps,
+  queryForTotalBookingTime,
+  queryForTotalMembers,
+  queryHealthCheck,
+};
 
 const prismaOptions: Prisma.PrismaClientOptions = {};
 
@@ -17,7 +30,7 @@ const globalForPrisma = global as unknown as {
 if (!!process.env.NEXT_PUBLIC_DEBUG) prismaOptions.log = ["query", "error", "warn"];
 
 // Prevents flooding with idle connections
-const prismaWithoutClientExtensions =
+export const prismaWithoutClientExtensions =
   globalForPrisma.prismaWithoutClientExtensions || new PrismaClientWithoutExtension(prismaOptions);
 
 export const customPrisma = (options?: Prisma.PrismaClientOptions) =>

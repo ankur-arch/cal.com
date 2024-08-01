@@ -1,6 +1,4 @@
-import prisma from "@calcom/prisma";
-
-import { queryForTotalBookingTime } from ".prisma/client/sql";
+import { prismaWithoutClientExtensions, SQL } from "@calcom/prisma";
 
 export const getTotalBookingDuration = async ({
   eventId,
@@ -13,11 +11,8 @@ export const getTotalBookingDuration = async ({
 }) => {
   // Aggregates the total booking time for a given event in a given time period
   // FIXME: bookings that overlap on one side will never be counted
-  const [totalBookingTime] = await prisma.$queryRawTyped(
-    queryForTotalBookingTime(),
-    eventId,
-    startDate,
-    endDate
+  const [totalBookingTime] = await prismaWithoutClientExtensions.$queryRawTyped(
+    SQL.queryForTotalBookingTime(eventId, startDate, endDate)
   );
 
   return totalBookingTime.totalMinutes ?? 0;

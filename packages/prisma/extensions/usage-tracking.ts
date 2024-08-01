@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client/default";
 
 import LicenseKeyService, { UsageEvent } from "@calcom/ee/common/server/LicenseKeyService";
 

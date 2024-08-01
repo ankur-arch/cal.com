@@ -1,17 +1,14 @@
-import { Prisma } from "@prisma/client";
-
 import type { Dayjs } from "@calcom/dayjs";
 import dayjs from "@calcom/dayjs";
 import type { DateRange } from "@calcom/lib/date-ranges";
 import { buildDateRanges } from "@calcom/lib/date-ranges";
 import { UserRepository } from "@calcom/lib/server/repository/user";
-import { prisma } from "@calcom/prisma";
+import { prisma, prismaWithoutClientExtensions, SQL } from "@calcom/prisma";
 
 import { TRPCError } from "@trpc/server";
 
 import type { TrpcSessionUser } from "../../../../trpc";
 import type { TListTeamAvailaiblityScheme } from "./listTeamAvailability.schema";
-import { queryForTotalMembers } from ".prisma/client/sql";
 
 type GetOptions = {
   ctx: {
@@ -157,7 +154,9 @@ async function getInfoForAllTeams({ ctx, input }: GetOptions) {
 
   // Get total team count across all teams the user is in (for pagination)
 
-  const totalTeamMembers = await prisma.$queryRawTyped(queryForTotalMembers(), Prisma.join(teamIds));
+  const totalTeamMembers = await prismaWithoutClientExtensions.$queryRawTyped(
+    SQL.queryForTotalMembers(teamIds)
+  );
 
   return {
     teamMembers,

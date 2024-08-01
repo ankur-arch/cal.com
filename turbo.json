@@ -143,8 +143,12 @@
     },
     "post-install": {
       "dependsOn": [],
-      "outputs": ["../../node_modules/@prisma/client/**", "../../node_modules/@prisma/admin-client/**"],
-      "inputs": ["./schema.prisma", "./prisma/schema.prisma"],
+      "outputs": [
+        "../../node_modules/@prisma/client/**",
+        "../../node_modules/@prisma/admin-client/**",
+        "../../node_modules/.prisma/client/sql/**"
+      ],
+      "inputs": ["./schema.prisma", "./prisma/schema.prisma", "./prisma/sql"],
       "env": ["PRISMA_GENERATE_DATAPROXY"]
     },
     "@calcom/prisma#post-install": {
