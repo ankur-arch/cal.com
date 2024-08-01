@@ -3778,11 +3778,11 @@ __metadata:
   resolution: "@calcom/prisma@workspace:packages/prisma"
   dependencies:
     "@calcom/lib": "*"
-    "@prisma/client": ^5.18.0-integration-feat-typed-sql.1
+    "@prisma/client": 5.18.0-integration-feat-typed-sql.1
     "@prisma/extension-accelerate": ^0.6.2
-    "@prisma/generator-helper": ^5.18.0-integration-feat-typed-sql.1
+    "@prisma/generator-helper": 5.18.0-integration-feat-typed-sql.1
     npm-run-all: ^4.1.5
-    prisma: ^5.18.0-integration-feat-typed-sql.1
+    prisma: 5.18.0-integration-feat-typed-sql.1
     prisma-kysely: ^1.7.1
     ts-node: ^10.9.1
     zod: ^3.22.4
@@ -9085,18 +9085,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:^5.18.0-integration-feat-typed-sql.1":
-  version: 5.18.0-integration-fix-config-dir-client.5
-  resolution: "@prisma/client@npm:5.18.0-integration-fix-config-dir-client.5"
-  peerDependencies:
-    prisma: "*"
-  peerDependenciesMeta:
-    prisma:
-      optional: true
-  checksum: f83fe16297e1f4b9d1b22316b57efc55f3a40ca47208d1a34965316c30eeaa4842da609cb1fb411917e9fc0c8484f2ce32a71f69d147af416bfc2c88a3a88874
-  languageName: node
-  linkType: hard
-
 "@prisma/debug@npm:3.8.1":
   version: 3.8.1
   resolution: "@prisma/debug@npm:3.8.1"
@@ -9112,6 +9100,13 @@ __metadata:
   version: 5.16.1
   resolution: "@prisma/debug@npm:5.16.1"
   checksum: b8e5043fdbc8fa9494f3a69e7ef02ef91c479b6a72b406b9984bf7e719141028621d9402e4a58e756513a080e49c2a3e74a5446d411c42708b82d852c4f953d7
+  languageName: node
+  linkType: hard
+
+"@prisma/debug@npm:5.18.0-integration-feat-typed-sql.1":
+  version: 5.18.0-integration-feat-typed-sql.1
+  resolution: "@prisma/debug@npm:5.18.0-integration-feat-typed-sql.1"
+  checksum: aa3954801ae3959ecc4018c2c8f9a35781b95798ace9253e4cdc5b377280cdeb9876ca69a01789136f4a5c100b23d9aea115f2a885c2574c6887544b91c3547e
   languageName: node
   linkType: hard
 
@@ -9147,6 +9142,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prisma/engines-version@npm:5.18.0-20.feat-introspect-sql-b2b600c154792b1859dfb09b93d383681a1b2bf0":
+  version: 5.18.0-20.feat-introspect-sql-b2b600c154792b1859dfb09b93d383681a1b2bf0
+  resolution: "@prisma/engines-version@npm:5.18.0-20.feat-introspect-sql-b2b600c154792b1859dfb09b93d383681a1b2bf0"
+  checksum: 713665750454333a05aa69cc74bf214fe42e6561902ae44881c4fedcefc44984901eef25270c39114ea92f1e2d0a0dade566a47c6bf9a8c18315e64d3c6277fc
+  languageName: node
+  linkType: hard
+
 "@prisma/engines@npm:5.16.1":
   version: 5.16.1
   resolution: "@prisma/engines@npm:5.16.1"
@@ -9156,6 +9158,18 @@ __metadata:
     "@prisma/fetch-engine": 5.16.1
     "@prisma/get-platform": 5.16.1
   checksum: 9ca04a99d9accfcce935b5da27e5494fee83457e8227f8b5a938914656c7ca3630dbab0ceaf48c55046d46ffaf23e063614eaf660bcfa826794911bd39307036
+  languageName: node
+  linkType: hard
+
+"@prisma/engines@npm:5.18.0-integration-feat-typed-sql.1":
+  version: 5.18.0-integration-feat-typed-sql.1
+  resolution: "@prisma/engines@npm:5.18.0-integration-feat-typed-sql.1"
+  dependencies:
+    "@prisma/debug": 5.18.0-integration-feat-typed-sql.1
+    "@prisma/engines-version": 5.18.0-20.feat-introspect-sql-b2b600c154792b1859dfb09b93d383681a1b2bf0
+    "@prisma/fetch-engine": 5.18.0-integration-feat-typed-sql.1
+    "@prisma/get-platform": 5.18.0-integration-feat-typed-sql.1
+  checksum: 816a9616bf2f995133ad4f44179aa6d7131feecf44c0828be05f705d9c806d17b5b65742e7e8623cd4616f18327166aded9abf7c3848ff723b093960333eace6
   languageName: node
   linkType: hard
 
@@ -9195,6 +9209,17 @@ __metadata:
     "@prisma/engines-version": 5.16.0-24.34ace0eb2704183d2c05b60b52fba5c43c13f303
     "@prisma/get-platform": 5.16.1
   checksum: 3157323bbce8dd016f62185e4187bcbefd9b028a75f3eeb7926c579baa1df07bda6a9cc46b22a7e0418909ea35acd8aa5d70e86cb70f04b617a3b32dceebec5f
+  languageName: node
+  linkType: hard
+
+"@prisma/fetch-engine@npm:5.18.0-integration-feat-typed-sql.1":
+  version: 5.18.0-integration-feat-typed-sql.1
+  resolution: "@prisma/fetch-engine@npm:5.18.0-integration-feat-typed-sql.1"
+  dependencies:
+    "@prisma/debug": 5.18.0-integration-feat-typed-sql.1
+    "@prisma/engines-version": 5.18.0-20.feat-introspect-sql-b2b600c154792b1859dfb09b93d383681a1b2bf0
+    "@prisma/get-platform": 5.18.0-integration-feat-typed-sql.1
+  checksum: 342f8b15a9f382e3f96754bfea43415d166eab1d2c7d4c93e2c533030d2874806f57910dc91faceb8483e51320d47493c954009c53cb27b8ffe5a8b40e4de17e
   languageName: node
   linkType: hard
 
@@ -9243,6 +9268,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prisma/generator-helper@npm:5.18.0-integration-feat-typed-sql.1":
+  version: 5.18.0-integration-feat-typed-sql.1
+  resolution: "@prisma/generator-helper@npm:5.18.0-integration-feat-typed-sql.1"
+  dependencies:
+    "@prisma/debug": 5.18.0-integration-feat-typed-sql.1
+  checksum: 774064f94884313f34d8f605abd8f367fdb5fe2127106a4ed0b385538a202faf68aafd199a1cab04251aa2597a9edd51df05419df603dba697761c51975ac4c8
+  languageName: node
+  linkType: hard
+
 "@prisma/generator-helper@npm:5.3.1":
   version: 5.3.1
   resolution: "@prisma/generator-helper@npm:5.3.1"
@@ -9252,15 +9286,6 @@ __metadata:
     cross-spawn: 7.0.3
     kleur: 4.1.5
   checksum: 2cb0cf86c1719db5007d3ac46d2e0a741d1431d26cda032d180b2edbad7a849c2d7b8cb90fbd1638da24de429ac1b6b0c4326eab38d2d97f66f774361ec11206
-  languageName: node
-  linkType: hard
-
-"@prisma/generator-helper@npm:^5.18.0-integration-feat-typed-sql.1":
-  version: 5.18.0-integration-fix-config-dir-client.5
-  resolution: "@prisma/generator-helper@npm:5.18.0-integration-fix-config-dir-client.5"
-  dependencies:
-    "@prisma/debug": 5.18.0-integration-fix-config-dir-client.5
-  checksum: 40dadb61b75cb3a300b367b6fbf3baa6cb85d3eed44eb0ea68499149f25b5a00fb0825a4301446b01dbceabc344bbb37edc0cc37f65f4d382b5d570162152e8b
   languageName: node
   linkType: hard
 
@@ -9282,6 +9307,15 @@ __metadata:
   dependencies:
     "@prisma/debug": 5.16.1
   checksum: 16c1a1a4f86b37b34bedce3d2d986135210bc47a4c50d5df2efa5c3fc3b8347e54124b19491828d7fac8e3ffa2c924fa5c27a9829db9b2d1d101366c0330e234
+  languageName: node
+  linkType: hard
+
+"@prisma/get-platform@npm:5.18.0-integration-feat-typed-sql.1":
+  version: 5.18.0-integration-feat-typed-sql.1
+  resolution: "@prisma/get-platform@npm:5.18.0-integration-feat-typed-sql.1"
+  dependencies:
+    "@prisma/debug": 5.18.0-integration-feat-typed-sql.1
+  checksum: a3ea36872548d7e3bc52f2f4e38f704b3312e58fd4c3a24dbd462afba1b2f34649f7107ed945e78332fa3a8e0d0e8a9d3f00e85857c7b313b4ca47677f14f3ca
   languageName: node
   linkType: hard
 
@@ -33551,6 +33585,17 @@ __metadata:
   bin:
     prisma-kysely: dist/bin.js
   checksum: 98ecddf04e68056bc8da2487062cb067410361dbcab75013c01cfb6ea05970b75b0c552d637d35d5b89fe72265da48416a67efc814d22e0f1c80c949d94b87d3
+  languageName: node
+  linkType: hard
+
+"prisma@npm:5.18.0-integration-feat-typed-sql.1":
+  version: 5.18.0-integration-feat-typed-sql.1
+  resolution: "prisma@npm:5.18.0-integration-feat-typed-sql.1"
+  dependencies:
+    "@prisma/engines": 5.18.0-integration-feat-typed-sql.1
+  bin:
+    prisma: build/index.js
+  checksum: fa2a3a6a9ef182444f76347dafad424cd214a97ef9b96af3e15e619cccdbdf4f66506b2af81c3c1741b4ef019efed9055c164684ee938e487312f17966707031
   languageName: node
   linkType: hard
 
