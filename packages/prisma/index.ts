@@ -33,6 +33,8 @@ if (!!process.env.NEXT_PUBLIC_DEBUG) prismaOptions.log = ["query", "error", "war
 export const prismaWithoutClientExtensions =
   globalForPrisma.prismaWithoutClientExtensions || new PrismaClientWithoutExtension(prismaOptions);
 
+export type PrismaWithoutClientExtensions = typeof prismaWithoutClientExtensions;
+
 export const customPrisma = (options?: Prisma.PrismaClientOptions) =>
   new PrismaClientWithoutExtension({ ...prismaOptions, ...options })
     .$extends(usageTrackingExtention())
