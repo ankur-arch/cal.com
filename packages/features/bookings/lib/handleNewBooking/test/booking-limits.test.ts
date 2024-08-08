@@ -5,7 +5,7 @@
  * see: https://github.com/calcom/cal.com/pull/10480
  *      https://github.com/calcom/cal.com/pull/10968
  */
-import { prismaWithoutClientMock } from "../../../../../../tests/libs/__mocks__/prismaMock";
+import prisma from "../../../../../../tests/libs/__mocks__/prismaMock";
 
 import {
   TestData,
@@ -244,9 +244,7 @@ describe("handleNewBooking", () => {
             body: mockBookingData,
           });
 
-          vi.spyOn(prismaWithoutClientMock, "$queryRawTyped").mockResolvedValue([
-            { totalMinutes: yearlyDurationLimit },
-          ]);
+          vi.spyOn(prisma, "$queryRawTyped").mockResolvedValue([{ totalMinutes: yearlyDurationLimit }]);
 
           await expect(async () => await handleNewBooking(req)).rejects.toThrowError(
             "duration_limit_reached"
@@ -272,7 +270,7 @@ describe("handleNewBooking", () => {
             body: mockBookingDataFollowingYear,
           });
 
-          vi.spyOn(prismaWithoutClientMock, "$queryRawTyped").mockResolvedValue([{ totalMinutes: 0 }]);
+          vi.spyOn(prisma, "$queryRawTyped").mockResolvedValue([{ totalMinutes: 0 }]);
 
           const createdBooking = await handleNewBooking(reqFollowingYear);
 

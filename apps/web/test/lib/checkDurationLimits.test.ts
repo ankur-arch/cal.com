@@ -1,4 +1,4 @@
-import { prismaWithoutClientMock } from "../../../../tests/libs/__mocks__/prismaMock";
+import prisma from "../../../../tests/libs/__mocks__/prismaMock";
 
 import { describe, expect, it } from "vitest";
 
@@ -19,19 +19,19 @@ const MOCK_DATA: MockData = {
 // Path: apps/web/test/lib/checkDurationLimits.ts
 describe("Check Duration Limits Tests", () => {
   it("Should return no errors if limit is not reached", async () => {
-    prismaWithoutClientMock.$queryRawTyped.mockResolvedValue([{ totalMinutes: 0 }]);
+    prisma.$queryRawTyped.mockResolvedValue([{ totalMinutes: 0 }]);
     await expect(
       checkDurationLimits({ PER_DAY: 60 }, MOCK_DATA.startDate, MOCK_DATA.id)
     ).resolves.toBeTruthy();
   });
   it("Should throw an error if limit is reached", async () => {
-    prismaWithoutClientMock.$queryRawTyped.mockResolvedValue([{ totalMinutes: 60 }]);
+    prisma.$queryRawTyped.mockResolvedValue([{ totalMinutes: 60 }]);
     await expect(
       checkDurationLimits({ PER_DAY: 60 }, MOCK_DATA.startDate, MOCK_DATA.id)
     ).rejects.toThrowError();
   });
   it("Should pass with multiple duration limits", async () => {
-    prismaWithoutClientMock.$queryRawTyped.mockResolvedValue([{ totalMinutes: 30 }]);
+    prisma.$queryRawTyped.mockResolvedValue([{ totalMinutes: 30 }]);
     await expect(
       checkDurationLimits(
         {
@@ -44,7 +44,7 @@ describe("Check Duration Limits Tests", () => {
     ).resolves.toBeTruthy();
   });
   it("Should pass with multiple duration limits with one undefined", async () => {
-    prismaWithoutClientMock.$queryRawTyped.mockResolvedValue([{ totalMinutes: 30 }]);
+    prisma.$queryRawTyped.mockResolvedValue([{ totalMinutes: 30 }]);
     await expect(
       checkDurationLimits(
         {
@@ -57,7 +57,7 @@ describe("Check Duration Limits Tests", () => {
     ).resolves.toBeTruthy();
   });
   it("Should return no errors if limit is not reached with multiple bookings", async () => {
-    prismaWithoutClientMock.$queryRawTyped.mockResolvedValue([{ totalMinutes: 60 }]);
+    prisma.$queryRawTyped.mockResolvedValue([{ totalMinutes: 60 }]);
     await expect(
       checkDurationLimits(
         {
@@ -70,7 +70,7 @@ describe("Check Duration Limits Tests", () => {
     ).resolves.toBeTruthy();
   });
   it("Should throw an error if one of the limit is reached with multiple bookings", async () => {
-    prismaWithoutClientMock.$queryRawTyped.mockResolvedValue([{ totalMinutes: 90 }]);
+    prisma.$queryRawTyped.mockResolvedValue([{ totalMinutes: 90 }]);
     await expect(
       checkDurationLimits(
         {
@@ -87,7 +87,7 @@ describe("Check Duration Limits Tests", () => {
 // Path: apps/web/test/lib/checkDurationLimits.ts
 describe("Check Duration Limit Tests", () => {
   it("Should return no busyTimes and no error if limit is not reached", async () => {
-    prismaWithoutClientMock.$queryRawTyped.mockResolvedValue([{ totalMinutes: 60 }]);
+    prisma.$queryRawTyped.mockResolvedValue([{ totalMinutes: 60 }]);
     await expect(
       checkDurationLimit({
         key: "PER_DAY",

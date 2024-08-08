@@ -1,7 +1,7 @@
-import { prismaWithoutClientExtensions, SQL } from "@calcom/prisma";
+import prisma, { SQL } from "@calcom/prisma";
 
 const getInstallCountPerApp = async () => {
-  const mostPopularApps = await prismaWithoutClientExtensions.$queryRawTyped(SQL.queryForMostPopularApps());
+  const mostPopularApps = await prisma.$queryRawTyped(SQL.queryForMostPopularApps());
 
   return mostPopularApps.reduce((acc, { appId, installCount }) => {
     acc[appId] = installCount;

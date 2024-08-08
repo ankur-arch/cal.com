@@ -1,10 +1,10 @@
 import { Prisma } from "@prisma/client";
 
-import { prismaWithoutClientExtensions, SQL } from "@calcom/prisma";
+import prisma, { SQL } from "@calcom/prisma";
 
 export async function isPrismaAvailableCheck() {
   try {
-    await prismaWithoutClientExtensions.$queryRawTyped(SQL.queryHealthCheck());
+    await prisma.$queryRawTyped(SQL.queryHealthCheck());
     return true;
   } catch (e: unknown) {
     if (e instanceof Prisma.PrismaClientInitializationError) {
